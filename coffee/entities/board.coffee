@@ -15,6 +15,7 @@ sj.SJAppManager.module 'Entities.Board', (Board, SJAppManager, Backbone, Marione
         defer = $.Deferred()
         boards = new Boards()
         boards.fetch
+            data: filter: 'open'
             success: (collection, response, options) ->
                 defer.resolve boards
          defer.promise()

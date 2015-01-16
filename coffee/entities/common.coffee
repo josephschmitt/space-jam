@@ -10,24 +10,24 @@ sj.SJAppManager.module 'Entities.Common', (Common, SJAppManager, Backbone, Mario
         apiBase: "#{apiEndpoint}/#{apiVersion}"
         idAttribute: 'id'
         urlRoot: -> "#{@apiBase}/#{@path}"
-        sync: (method, model, options={}) ->
+        sync: (method, model, options={data:{}}) ->
             options = _.extend options, 
                 dataType: 'jsonp'
                 type: 'GET'
-                data: 
-                    key: apiKey
-                    token: Trello.token()
+            options.data = _.extend options.data,
+                key: apiKey
+                token: Trello.token()
             super method, model, options
 
     class Common.TrelloAPICollection extends Backbone.Collection
         apiBase: "#{apiEndpoint}/#{apiVersion}"
         model: Common.TrelloAPIModel
         url: -> "#{@apiBase}/#{@path}"
-        sync: (method, collection, options={}) ->
+        sync: (method, model, options={data:{}}) ->
             options = _.extend options, 
                 dataType: 'jsonp'
                 type: 'GET'
-                data: 
-                    key: apiKey
-                    token: Trello.token()
-            super method, collection, options
+            options.data = _.extend options.data,
+                key: apiKey
+                token: Trello.token()
+            super method, model, options

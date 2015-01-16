@@ -21,7 +21,10 @@
     <main id="main"></main>
 
     <!-- templates -->
-    <script type="text/template">
+    <script type="text/template" id="board-item-template">
+        <a href="<%- data.url %>"><%= data.name %></a>
+    </script>
+
     </script>
     
     <script src="js/lib/jquery.js"></script>
@@ -40,11 +43,12 @@
     <script src="js/lib/jquery.placeholder.js"></script>
     <script src="js/lib/moment.js"></script>
     <script src="js/lib/transition-region.js"></script>
-    <script src="config.js"></script>
     <script src="js/app.js"></script>
     <script src="js/entities/common.js"></script>
+    <script src="js/apps/boards/boards_app.js"></script>
+    <script src="js/apps/boards/list/list_controller.js"></script>
+    <script src="js/apps/boards/list/list_view.js"></script>
     <script src="js/entities/board.js"></script>
-    <script src="js/transition-region.js"></script>
     <!-- endinjector -->
 
     <script type="text/javascript">
@@ -60,6 +64,9 @@
                     read: true,
                     write: true,
                     account: false
+                },
+                success: function() {
+                    sj.SJAppManager.start();
                 }
             });
         }

@@ -1,0 +1,9 @@
+# `sj` is our namespace. Everything should be in `sj` to avoid name conflicts.
+sj = window.sj = (window.sj or {})
+
+sj.SJAppManager.module 'Boards.List', (List, SJAppManager, Backbone, Marionette, $, _) ->
+    List.Controller = 
+        listBoards: ->
+            $.when(SJAppManager.request('entities:boards')).done (boards) ->
+                boardsView = new List.BoardsCollectionView collection: boards
+                SJAppManager.mainRegion.show boardsView

@@ -39,6 +39,9 @@
       defer = $.Deferred();
       boards = new Boards();
       boards.fetch({
+        data: {
+          filter: 'open'
+        },
         success: function(collection, response, options) {
           return defer.resolve(boards);
         }
