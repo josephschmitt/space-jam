@@ -6,7 +6,8 @@
   sj = window.sj = window.sj || {};
 
   sj.SJAppManager.module('Entities', function(Entities, SJAppManager, Backbone, Marionette, $, _) {
-    var getBoards;
+    var Common, getBoards;
+    Common = SJAppManager.module('Entities.Common');
     Entities.Board = (function(_super) {
       __extends(Board, _super);
 
@@ -18,7 +19,7 @@
 
       return Board;
 
-    })(Entities.Common.TrelloAPIModel);
+    })(Common.TrelloAPIModel);
     Entities.Boards = (function(_super) {
       __extends(Boards, _super);
 
@@ -32,7 +33,7 @@
 
       return Boards;
 
-    })(Entities.Common.TrelloAPICollection);
+    })(Common.TrelloAPICollection);
     getBoards = function() {
       var boards, defer;
       defer = $.Deferred();

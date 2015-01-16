@@ -2,10 +2,12 @@
 sj = window.sj = (window.sj or {})
 
 sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette, $, _) ->
-    class Entities.List extends Entities.Common.TrelloAPIModel
+    Common = SJAppManager.module('Entities.Common')
+
+    class Entities.List extends Common.TrelloAPIModel
         path: 'lists'
 
-    class Entities.Lists extends Entities.Common.TrelloAPICollection
+    class Entities.Lists extends Common.TrelloAPICollection
         path: 'boards'
         model: Entities.List
         parse: (response, options) ->
