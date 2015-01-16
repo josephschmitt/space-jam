@@ -33,6 +33,7 @@ do ->
             if window.navigator.standalone
                 $('body').addClass 'standalone'
             if Backbone.history then Backbone.history.start()
+            if not @getCurrentRoute() then @trigger 'boards:list'
 
     # Init the app
     sj.SJAppManager = new SpaceJamApplication()

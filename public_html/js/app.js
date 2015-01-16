@@ -66,7 +66,10 @@
           $('body').addClass('standalone');
         }
         if (Backbone.history) {
-          return Backbone.history.start();
+          Backbone.history.start();
+        }
+        if (!this.getCurrentRoute()) {
+          return this.trigger('boards:list');
         }
       };
 
