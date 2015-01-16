@@ -96,6 +96,8 @@ module.exports = function(grunt) {
 				files: {
 					'public_html/index.html': [
 						// Base libs
+						'public_html/js/lib/jquery.js', 
+						'public_html/js/lib/client.js', 
 						'public_html/js/lib/underscore.js', 
 						'public_html/js/lib/backbone.js',  
 						
@@ -110,10 +112,7 @@ module.exports = function(grunt) {
 						'public_html/js/app.js',
 						'public_html/js/entities/common.js', 
 						'public_html/js/apps/common/**/*.js', 
-						'public_html/js/**/*.js', 
-
-						// Exclude jquery, we're included jquery manually
-						'!public_html/js/lib/jquery.js', 
+						'public_html/js/**/*.js',
 
 						// Exclude minified files
 						'!public_html/js/**/*min*.js', 

@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# rev 4 - 2015-01-16T06:28:13.237Z
+
+CACHE:
+css/lib/foundation-icons.css
+css/styles.css
+index.html
+js/app-min.js
+
+NETWORK:
+*
+
+SETTINGS:
+prefer-online
