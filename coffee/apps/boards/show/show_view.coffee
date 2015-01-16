@@ -6,7 +6,7 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
 
 	class Show.ListItemView extends Marionette.ItemView
 		template: '#card-item-template'
-		className: 'columns small-12'
+		className: 'columns small-12 list-item'
 		tagName: 'li'
 
 	class Show.ListCompositeView extends Marionette.CompositeView
@@ -17,6 +17,12 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
 		initialize: (options) ->
 			super
 			@collection = new Entities.Cards options?.model?.get('cards')
+		render: ->
+			super
+			@sortable = new Sortable @$(@childViewContainer).get(0),
+				group: 'trello-list'
+				draggable: '.list-item'
+				ghostClass: 'ghost'
 
 	class Show.BoardView extends Marionette.CompositeView
 		template: '#board-template'

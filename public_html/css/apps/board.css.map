@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,MAAO;EACN,UAAU,EAAE,MAAM",
+"sources": ["../../../scss/apps/board.scss"],
+"names": [],
+"file": "board.css"
+}

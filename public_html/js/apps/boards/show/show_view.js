@@ -17,7 +17,7 @@
 
       ListItemView.prototype.template = '#card-item-template';
 
-      ListItemView.prototype.className = 'columns small-12';
+      ListItemView.prototype.className = 'columns small-12 list-item';
 
       ListItemView.prototype.tagName = 'li';
 
@@ -43,6 +43,15 @@
         var _ref;
         ListCompositeView.__super__.initialize.apply(this, arguments);
         return this.collection = new Entities.Cards(options != null ? (_ref = options.model) != null ? _ref.get('cards') : void 0 : void 0);
+      };
+
+      ListCompositeView.prototype.render = function() {
+        ListCompositeView.__super__.render.apply(this, arguments);
+        return this.sortable = new Sortable(this.$(this.childViewContainer).get(0), {
+          group: 'trello-list',
+          draggable: '.list-item',
+          ghostClass: 'ghost'
+        });
       };
 
       return ListCompositeView;

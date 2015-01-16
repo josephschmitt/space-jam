@@ -35,7 +35,7 @@
     </script>
 
     <script type="text/template" id="card-item-template">
-        <label><input <% if (_.contains(data.labels, 'done')) { %>checked<% } %> type="checkbox" /> <%= data.name %></label>
+        <input <% if (_.contains(data.labels, 'done')) { %>checked<% } %> type="checkbox" /> <%= data.name %>
     </script>
     
     <!-- injector:js -->

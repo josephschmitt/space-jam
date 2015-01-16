@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- injector:css -->
+    <link rel="stylesheet" href="css/apps/board.css">
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/lib/foundation-icons.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -37,7 +38,7 @@
     </script>
 
     <script type="text/template" id="card-item-template">
-        <label><input <% if (_.contains(data.labels, 'done')) { %>checked<% } %> type="checkbox" /> <%= data.name %></label>
+        <input <% if (_.contains(data.labels, 'done')) { %>checked<% } %> type="checkbox" /> <%= data.name %>
     </script>
     
     <!-- injector:js -->
@@ -46,6 +47,7 @@
     <script src="js/lib/underscore.js"></script>
     <script src="js/lib/backbone.js"></script>
     <script src="js/lib/Backbone.dualStorage.js"></script>
+    <script src="js/lib/Sortable.js"></script>
     <script src="js/lib/backbone.babysitter.js"></script>
     <script src="js/lib/backbone.marionette.js"></script>
     <script src="js/lib/backbone.wreqr.js"></script>
