@@ -6,4 +6,7 @@ sj.SJAppManager.module 'Boards.List', (List, SJAppManager, Backbone, Marionette,
         listBoards: ->
             $.when(SJAppManager.request('entities:boards')).done (boards) ->
                 boardsView = new List.BoardsCollectionView collection: boards
+                boardsView.on 'childview:boards:show', (childView, args) -> 
+                    SJAppManager.trigger 'boards:show', args.model.get('id')
+
                 SJAppManager.mainRegion.show boardsView

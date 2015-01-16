@@ -5,10 +5,9 @@
 
   sj = window.sj = window.sj || {};
 
-  sj.SJAppManager.module('Entities.Board', function(Board, SJAppManager, Backbone, Marionette, $, _) {
-    var Boards, Common, getBoards;
-    Common = SJAppManager.module('Entities.Common');
-    Board = (function(_super) {
+  sj.SJAppManager.module('Entities', function(Entities, SJAppManager, Backbone, Marionette, $, _) {
+    var getBoards;
+    Entities.Board = (function(_super) {
       __extends(Board, _super);
 
       function Board() {
@@ -19,8 +18,8 @@
 
       return Board;
 
-    })(Common.TrelloAPIModel);
-    Boards = (function(_super) {
+    })(Entities.Common.TrelloAPIModel);
+    Entities.Boards = (function(_super) {
       __extends(Boards, _super);
 
       function Boards() {
@@ -29,15 +28,15 @@
 
       Boards.prototype.path = 'members/me/boards';
 
-      Boards.prototype.model = Board;
+      Boards.prototype.model = Entities.Board;
 
       return Boards;
 
-    })(Common.TrelloAPICollection);
+    })(Entities.Common.TrelloAPICollection);
     getBoards = function() {
       var boards, defer;
       defer = $.Deferred();
-      boards = new Boards();
+      boards = new Entities.Boards();
       boards.fetch({
         data: {
           filter: 'open'

@@ -13,9 +13,13 @@
         return BoardView.__super__.constructor.apply(this, arguments);
       }
 
-      BoardView.prototype.template = '#board-item-template';
+      BoardView.prototype.template = '#board-list-item-template';
 
       BoardView.prototype.tagName = 'li';
+
+      BoardView.prototype.triggers = {
+        'click': 'boards:show'
+      };
 
       return BoardView;
 

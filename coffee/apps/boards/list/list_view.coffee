@@ -3,8 +3,10 @@ sj = window.sj = (window.sj or {})
 
 sj.SJAppManager.module 'Boards.List', (List, SJAppManager, Backbone, Marionette, $, _) ->
 	class List.BoardView extends Marionette.ItemView
-		template: '#board-item-template'
+		template: '#board-list-item-template'
 		tagName: 'li'
+		triggers:
+			'click': 'boards:show'
 
 	class List.BoardsCollectionView extends Marionette.CollectionView
 		childView: List.BoardView

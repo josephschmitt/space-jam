@@ -11,6 +11,9 @@
           boardsView = new List.BoardsCollectionView({
             collection: boards
           });
+          boardsView.on('childview:boards:show', function(childView, args) {
+            return SJAppManager.trigger('boards:show', args.model.get('id'));
+          });
           return SJAppManager.mainRegion.show(boardsView);
         });
       }
