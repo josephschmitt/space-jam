@@ -4,8 +4,12 @@ sj = window.sj = (window.sj or {})
 sj.SJAppManager.module 'Entities.Board', (Board, SJAppManager, Backbone, Marionette, $, _) ->
     Common = SJAppManager.module('Entities.Common')
 
+    class Board extends Common.TrelloAPIModel
+        path: 'boards'
+
     class Boards extends Common.TrelloAPICollection
         path: 'members/me/boards'
+        model: Board
 
     getBoards = ->
         defer = $.Deferred()

@@ -21,7 +21,7 @@
 
       TrelloAPIModel.prototype.idAttribute = 'id';
 
-      TrelloAPIModel.prototype.url = function() {
+      TrelloAPIModel.prototype.urlRoot = function() {
         return "" + this.apiBase + "/" + this.path;
       };
 

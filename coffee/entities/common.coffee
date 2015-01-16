@@ -9,7 +9,7 @@ sj.SJAppManager.module 'Entities.Common', (Common, SJAppManager, Backbone, Mario
     class Common.TrelloAPIModel extends Backbone.Model
         apiBase: "#{apiEndpoint}/#{apiVersion}"
         idAttribute: 'id'
-        url: -> "#{@apiBase}/#{@path}"
+        urlRoot: -> "#{@apiBase}/#{@path}"
         sync: (method, model, options={}) ->
             options = _.extend options, 
                 dataType: 'jsonp'
