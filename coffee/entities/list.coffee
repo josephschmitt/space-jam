@@ -8,6 +8,8 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
     class Entities.Lists extends Entities.Common.TrelloAPICollection
         path: 'boards'
         model: Entities.List
+        parse: (response, options) ->
+            _.reject response, (list) -> !list.cards?.length
 
     getLists = (board_id) ->
         defer = $.Deferred()
@@ -19,6 +21,7 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
                 cards: 'open'
                 card_fields: 'name,labels'
             success: (collection, response, options) ->
+                lists.reject 
                 defer.resolve lists
          defer.promise()
 

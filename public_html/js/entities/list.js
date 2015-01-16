@@ -30,6 +30,13 @@
 
       Lists.prototype.model = Entities.List;
 
+      Lists.prototype.parse = function(response, options) {
+        return _.reject(response, function(list) {
+          var _ref;
+          return !((_ref = list.cards) != null ? _ref.length : void 0);
+        });
+      };
+
       return Lists;
 
     })(Entities.Common.TrelloAPICollection);
@@ -45,6 +52,7 @@
           card_fields: 'name,labels'
         },
         success: function(collection, response, options) {
+          lists.reject;
           return defer.resolve(lists);
         }
       });
