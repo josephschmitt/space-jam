@@ -6,11 +6,14 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
 
 	class Show.ListItemView extends Marionette.ItemView
 		template: '#card-item-template'
+		className: 'columns small-12'
+		tagName: 'li'
 
 	class Show.ListCompositeView extends Marionette.CompositeView
 		template: '#list-template'
 		childViewContainer: '.list-items'
 		childView: Show.ListItemView
+		className: 'columns medium-6 medium-offset-3 small-12'
 		initialize: (options) ->
 			super
 			@collection = new Entities.Cards options?.model?.get('cards')
@@ -19,3 +22,4 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
 		template: '#board-template'
 		childViewContainer: '.lists'
 		childView: Show.ListCompositeView
+		className: 'row'

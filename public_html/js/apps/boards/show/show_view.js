@@ -17,6 +17,10 @@
 
       ListItemView.prototype.template = '#card-item-template';
 
+      ListItemView.prototype.className = 'columns small-12';
+
+      ListItemView.prototype.tagName = 'li';
+
       return ListItemView;
 
     })(Marionette.ItemView);
@@ -32,6 +36,8 @@
       ListCompositeView.prototype.childViewContainer = '.list-items';
 
       ListCompositeView.prototype.childView = Show.ListItemView;
+
+      ListCompositeView.prototype.className = 'columns medium-6 medium-offset-3 small-12';
 
       ListCompositeView.prototype.initialize = function(options) {
         var _ref;
@@ -54,6 +60,8 @@
       BoardView.prototype.childViewContainer = '.lists';
 
       BoardView.prototype.childView = Show.ListCompositeView;
+
+      BoardView.prototype.className = 'row';
 
       return BoardView;
 

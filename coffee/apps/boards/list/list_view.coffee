@@ -5,9 +5,11 @@ sj.SJAppManager.module 'Boards.List', (List, SJAppManager, Backbone, Marionette,
 	class List.BoardView extends Marionette.ItemView
 		template: '#board-list-item-template'
 		tagName: 'li'
+		className: 'columns small-12'
 		triggers:
 			'click': 'boards:show'
 
 	class List.BoardsCollectionView extends Marionette.CollectionView
 		childView: List.BoardView
 		tagName: 'ul'
+		className: 'row'

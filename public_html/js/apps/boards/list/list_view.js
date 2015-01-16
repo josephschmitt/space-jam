@@ -17,6 +17,8 @@
 
       BoardView.prototype.tagName = 'li';
 
+      BoardView.prototype.className = 'columns small-12';
+
       BoardView.prototype.triggers = {
         'click': 'boards:show'
       };
@@ -34,6 +36,8 @@
       BoardsCollectionView.prototype.childView = List.BoardView;
 
       BoardsCollectionView.prototype.tagName = 'ul';
+
+      BoardsCollectionView.prototype.className = 'row';
 
       return BoardsCollectionView;
 
