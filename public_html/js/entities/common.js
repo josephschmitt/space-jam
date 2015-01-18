@@ -36,7 +36,9 @@
           'read': 'GET',
           'delete': 'DELETE'
         };
-        return xhr = Trello.rest(methodsMap[method], "" + this.path + "/" + this.id, model.attributes);
+        xhr = Trello.rest(methodsMap[method], "" + this.path + "/" + this.id, model.attributes);
+        model.trigger('request', model, xhr, options);
+        return xhr;
       };
 
       return TrelloAPIModel;

@@ -18,6 +18,8 @@ sj.SJAppManager.module 'Entities.Common', (Common, SJAppManager, Backbone, Mario
                 'delete': 'DELETE'
 
             xhr = Trello.rest methodsMap[method], "#{@path}/#{@id}", model.attributes
+            model.trigger 'request', model, xhr, options
+            xhr
 
     class Common.TrelloAPICollection extends Backbone.Collection
         apiBase: "#{apiEndpoint}/#{apiVersion}"
