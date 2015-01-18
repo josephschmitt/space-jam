@@ -11,6 +11,7 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
         path: 'boards'
         model: Entities.List
         parse: (response, options) ->
+            # Don't show lists with no cards
             _.reject response, (list) -> !list.cards?.length
 
     getLists = (board_id) ->
@@ -20,8 +21,8 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
         lists.fetch
             data: 
                 filter: 'open'
-                cards: 'open'
-                card_fields: 'name,labels'
+                cards: 'all'
+                card_fields: 'name,closed'
             success: (collection, response, options) ->
                 lists.reject 
                 defer.resolve lists

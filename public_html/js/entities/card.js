@@ -15,7 +15,7 @@
         return Card.__super__.constructor.apply(this, arguments);
       }
 
-      Card.prototype.path = 'card';
+      Card.prototype.path = 'cards';
 
       return Card;
 

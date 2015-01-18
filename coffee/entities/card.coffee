@@ -5,7 +5,7 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
     Common = SJAppManager.module('Entities.Common')
 
     class Entities.Card extends Common.TrelloAPIModel
-        path: 'card'
+        path: 'cards'
 
     class Entities.Cards extends Common.TrelloAPICollection
         path: 'lists'

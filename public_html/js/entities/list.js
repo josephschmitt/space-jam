@@ -49,8 +49,8 @@
       lists.fetch({
         data: {
           filter: 'open',
-          cards: 'open',
-          card_fields: 'name,labels'
+          cards: 'all',
+          card_fields: 'name,closed'
         },
         success: function(collection, response, options) {
           lists.reject;

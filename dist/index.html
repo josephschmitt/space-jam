@@ -35,12 +35,15 @@
     </script>
 
     <script type="text/template" id="card-item-template">
-        <input <% if (_.contains(data.labels, 'done')) { %>checked<% } %> type="checkbox" /> <%= data.name %>
+        <% var checked = data.closed || _.contains(data.labels, 'done') %>
+        <input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %>
     </script>
     
     <!-- injector:js -->
     <script src="js/app-min.js"></script>
     <!-- endinjector -->
+
+      <script src="https://api.trello.com/1/client.js?key=3d424960cec9c7085488d27d1307146a"></script>
 
     <script type="text/javascript">
         // Override offline status codes (Safari reports a 404 when offline)

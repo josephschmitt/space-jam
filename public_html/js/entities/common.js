@@ -26,20 +26,17 @@
       };
 
       TrelloAPIModel.prototype.sync = function(method, model, options) {
+        var methodsMap, xhr;
         if (options == null) {
-          options = {
-            data: {}
-          };
+          options = {};
         }
-        options = _.extend(options, {
-          dataType: 'jsonp',
-          type: 'GET'
-        });
-        options.data = _.extend(options.data, {
-          key: apiKey,
-          token: Trello.token()
-        });
-        return TrelloAPIModel.__super__.sync.call(this, method, model, options);
+        methodsMap = {
+          'create': 'POST',
+          'update': 'PUT',
+          'read': 'GET',
+          'delete': 'DELETE'
+        };
+        return xhr = Trello.rest(methodsMap[method], "" + this.path + "/" + this.id, model.attributes);
       };
 
       return TrelloAPIModel;
@@ -62,18 +59,19 @@
 
       TrelloAPICollection.prototype.sync = function(method, model, options) {
         if (options == null) {
-          options = {
-            data: {}
-          };
+          options = {};
         }
         options = _.extend(options, {
           dataType: 'jsonp',
           type: 'GET'
         });
-        options.data = _.extend(options.data, {
-          key: apiKey,
-          token: Trello.token()
-        });
+        if (options.data) {
+          options.data = _.extend(options.data, {
+            _method: method,
+            key: apiKey,
+            token: Trello.token()
+          });
+        }
         return TrelloAPICollection.__super__.sync.call(this, method, model, options);
       };
 

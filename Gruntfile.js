@@ -97,7 +97,6 @@ module.exports = function(grunt) {
 					'public_html/index.html': [
 						// Base libs
 						'public_html/js/lib/jquery.js', 
-						'public_html/js/lib/client.js', 
 						'public_html/js/lib/underscore.js', 
 						'public_html/js/lib/backbone.js',  
 						

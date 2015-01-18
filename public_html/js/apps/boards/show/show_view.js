@@ -21,6 +21,20 @@
 
       ListItemView.prototype.tagName = 'li';
 
+      ListItemView.prototype.ui = {
+        checkbox: 'input[type="checkbox"]'
+      };
+
+      ListItemView.prototype.events = {
+        'change @ui.checkbox': 'change'
+      };
+
+      ListItemView.prototype.change = function(e) {
+        return this.model.save({
+          closed: this.ui.checkbox.prop('checked')
+        });
+      };
+
       return ListItemView;
 
     })(Marionette.ItemView);
@@ -46,11 +60,16 @@
       };
 
       ListCompositeView.prototype.render = function() {
+        var _ref;
         ListCompositeView.__super__.render.apply(this, arguments);
+        if ((_ref = this.sortable) != null) {
+          _ref.destroy();
+        }
         return this.sortable = new Sortable(this.$(this.childViewContainer).get(0), {
           group: 'trello-list',
           draggable: '.list-item',
-          ghostClass: 'ghost'
+          ghostClass: 'ghost',
+          onEnd: function(e) {}
         });
       };
 
