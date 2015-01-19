@@ -43,6 +43,7 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
                 group: 'trello-list'
                 draggable: '.list-item'
                 ghostClass: 'ghost'
+                handle: '.handle'
                 onEnd: (e) -> $(e.item).trigger 'drag:end', e
                     
     class Show.BoardView extends Marionette.CompositeView

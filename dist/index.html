@@ -37,6 +37,7 @@
     </script>
 
     <script type="text/template" id="card-item-template">
+        <span class="handle fi-list"></span>
         <% var checked = data.closed || _.contains(data.labels, 'done') %>
         <input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %>
     </script>

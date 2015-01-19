@@ -89,6 +89,7 @@
           group: 'trello-list',
           draggable: '.list-item',
           ghostClass: 'ghost',
+          handle: '.handle',
           onEnd: function(e) {
             return $(e.item).trigger('drag:end', e);
           }

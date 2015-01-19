@@ -1,8 +1,12 @@
 CACHE MANIFEST
-# rev 15 - 2015-01-19T01:53:18.022Z
+# rev 16 - 2015-01-19T02:03:56.871Z
 
 CACHE:
 css/lib/foundation-icons.css
+css/lib/foundation-icons.eot
+css/lib/foundation-icons.svg
+css/lib/foundation-icons.ttf
+css/lib/foundation-icons.woff
 css/styles.css
 index.html
 js/app-min.js
