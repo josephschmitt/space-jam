@@ -44,7 +44,7 @@
       ListItemView.prototype.dragend = function(e, drag) {
         var $next, $prev, pos;
         $next = this.$el.next(this.tagName);
-        $prev = this.$el.pev(this.tagName);
+        $prev = this.$el.prev(this.tagName);
         pos = drag.newIndex === 0 ? 'top' : $next.length ? $next.data('pos') - 1 : 'bottom';
         if (pos === $prev.data('pos')) {
           pos += 0.5;

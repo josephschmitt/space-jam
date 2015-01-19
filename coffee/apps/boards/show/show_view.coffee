@@ -21,7 +21,7 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
                 closed: @ui.checkbox.prop('checked')
         dragend: (e, drag) ->
             $next = @$el.next @tagName
-            $prev = @$el.pev @tagName
+            $prev = @$el.prev @tagName
             pos = if drag.newIndex is 0 then 'top' else if $next.length then $next.data('pos') - 1 else 'bottom'
             if pos is $prev.data('pos') then pos += 0.5
             @model.save
