@@ -32,7 +32,7 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
         template: '#list-template'
         childViewContainer: '.list-items'
         childView: Show.ListItemView
-        className: 'columns medium-6 medium-offset-3 small-12'
+        className: 'row'
         initialize: (options) ->
             super
             @collection = new Entities.Cards options?.model?.get('cards')
@@ -49,4 +49,3 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
         template: '#board-template'
         childViewContainer: '.lists'
         childView: Show.ListCompositeView
-        className: 'row'

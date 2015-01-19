@@ -29,9 +29,11 @@
     </script>
 
     <script type="text/template" id="list-template">
-        <h2><%- data.name %></h2>
-        <ul data-id="<%- data.id %>" style="list-style: none;" class="list-items row"></ul>
-        <hr/>
+        <div class="columns medium-6 medium-offset-3 small-12">
+            <h2><%- data.name %></h2>
+            <ul data-id="<%- data.id %>" style="list-style: none;" class="list-items row"></ul>
+            <hr/>
+        </div>
     </script>
 
     <script type="text/template" id="card-item-template">
