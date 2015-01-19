@@ -42,9 +42,13 @@
       };
 
       ListItemView.prototype.dragend = function(e, drag) {
-        var $next, pos;
+        var $next, $prev, pos;
         $next = this.$el.next(this.tagName);
+        $prev = this.$el.pev(this.tagName);
         pos = drag.newIndex === 0 ? 'top' : $next.length ? $next.data('pos') - 1 : 'bottom';
+        if (pos === $prev.data('pos')) {
+          pos += 0.5;
+        }
         return this.model.save({
           pos: pos,
           idList: this.$el.parent('ul').data('id')
