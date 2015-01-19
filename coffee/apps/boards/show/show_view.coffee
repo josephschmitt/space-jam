@@ -12,8 +12,19 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
             checkbox: 'input[type="checkbox"]'
         events:
             'change @ui.checkbox': 'change'
+            'drag:end': 'dragend'
+        render: ->
+            super
+            @$el.attr 'data-pos', @model.get('pos')
         change: (e) ->
-            @model.save closed: @ui.checkbox.prop('checked')
+            @model.save 
+                closed: @ui.checkbox.prop('checked')
+        dragend: (e, drag) ->
+            $next = @$el.next @tagName
+            pos = if drag.newIndex is 0 then 'top' else if $next.length then $next.data('pos') - 1 else 'bottom'
+            @model.save
+                pos: pos
+                idList: @$el.parent('ul').data('id')
 
     class Show.ListCompositeView extends Marionette.CompositeView
         template: '#list-template'
@@ -30,7 +41,7 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
                 group: 'trello-list'
                 draggable: '.list-item'
                 ghostClass: 'ghost'
-                onEnd: (e) ->
+                onEnd: (e) -> $(e.item).trigger 'drag:end', e
                     
     class Show.BoardView extends Marionette.CompositeView
         template: '#board-template'

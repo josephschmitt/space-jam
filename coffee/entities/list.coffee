@@ -22,7 +22,7 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
             data: 
                 filter: 'open'
                 cards: 'all'
-                card_fields: 'name,closed'
+                card_fields: 'name,closed,idList,pos'
             success: (collection, response, options) ->
                 lists.reject 
                 defer.resolve lists

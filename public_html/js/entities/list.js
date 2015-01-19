@@ -50,7 +50,7 @@
         data: {
           filter: 'open',
           cards: 'all',
-          card_fields: 'name,closed'
+          card_fields: 'name,closed,idList,pos'
         },
         success: function(collection, response, options) {
           lists.reject;

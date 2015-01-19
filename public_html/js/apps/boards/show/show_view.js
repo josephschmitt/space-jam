@@ -26,12 +26,28 @@
       };
 
       ListItemView.prototype.events = {
-        'change @ui.checkbox': 'change'
+        'change @ui.checkbox': 'change',
+        'drag:end': 'dragend'
+      };
+
+      ListItemView.prototype.render = function() {
+        ListItemView.__super__.render.apply(this, arguments);
+        return this.$el.attr('data-pos', this.model.get('pos'));
       };
 
       ListItemView.prototype.change = function(e) {
         return this.model.save({
           closed: this.ui.checkbox.prop('checked')
+        });
+      };
+
+      ListItemView.prototype.dragend = function(e, drag) {
+        var $next, pos;
+        $next = this.$el.next(this.tagName);
+        pos = drag.newIndex === 0 ? 'top' : $next.length ? $next.data('pos') - 1 : 'bottom';
+        return this.model.save({
+          pos: pos,
+          idList: this.$el.parent('ul').data('id')
         });
       };
 
@@ -69,7 +85,9 @@
           group: 'trello-list',
           draggable: '.list-item',
           ghostClass: 'ghost',
-          onEnd: function(e) {}
+          onEnd: function(e) {
+            return $(e.item).trigger('drag:end', e);
+          }
         });
       };
 
