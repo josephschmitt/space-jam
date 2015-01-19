@@ -44,6 +44,7 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
                 draggable: '.list-item'
                 ghostClass: 'ghost'
                 handle: '.handle'
+                animation: 150
                 onEnd: (e) -> $(e.item).trigger 'drag:end', e
                     
     class Show.BoardView extends Marionette.CompositeView

@@ -90,6 +90,7 @@
           draggable: '.list-item',
           ghostClass: 'ghost',
           handle: '.handle',
+          animation: 150,
           onEnd: function(e) {
             return $(e.item).trigger('drag:end', e);
           }
