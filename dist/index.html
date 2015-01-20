@@ -43,9 +43,9 @@
     </script>
 
     <script type="text/template" id="card-view-template">
-        <div class="columns medium-6 medium-offset-3 small-12">
+        <div class="columns medium-10 medium-offset-1 small-12">
             <% var checked = data.closed || _.contains(data.labels, 'done') %>
-            <h2><input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %> <small>In list <strong><%= data.list.name %></strong></small></h2>
+            <h2><input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %> <small>In&nbsp;list&nbsp;<strong><%= data.list.name %></strong></small></h2>
             <%= data.desc %>
 
             <% if (data.actions && data.actions.length) { %>
