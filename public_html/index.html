@@ -50,6 +50,17 @@
             <% var checked = data.closed || _.contains(data.labels, 'done') %>
             <h2><input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %> <small>In list <strong><%= data.list.name %></strong></small></h2>
             <%= data.desc %>
+
+            <% if (data.actions && data.actions.length) { %>
+                <ul>
+                    <% _.each(data.actions.reverse(), function(action) { %>
+                        <li>
+                            <h6><strong><%- action.memberCreator.fullName %></strong></h6>
+                            <p><%= action.data.text %></p>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
         </div>
     </script>
     

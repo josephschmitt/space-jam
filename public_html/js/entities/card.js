@@ -58,6 +58,7 @@
       card.path = 'cards';
       card.fetch({
         data: {
+          actions: 'commentCard',
           checkItemStates: true,
           list: true,
           list_fields: 'idBoard,name'
