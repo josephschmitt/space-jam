@@ -26,7 +26,7 @@
       };
 
       TrelloAPIModel.prototype.sync = function(method, model, options) {
-        var methodsMap, xhr;
+        var methodsMap, requestData, xhr;
         if (options == null) {
           options = {};
         }
@@ -36,7 +36,8 @@
           'read': 'GET',
           'delete': 'DELETE'
         };
-        xhr = Trello.rest(methodsMap[method], "" + this.path + "/" + this.id, model.attributes);
+        requestData = method === 'read' ? options.data : model.toJSON();
+        xhr = Trello.rest(methodsMap[method], "" + this.path + "/" + this.id, requestData, options.success, options.error);
         model.trigger('request', model, xhr, options);
         return xhr;
       };

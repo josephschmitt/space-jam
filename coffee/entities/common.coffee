@@ -14,10 +14,11 @@ sj.SJAppManager.module 'Entities.Common', (Common, SJAppManager, Backbone, Mario
             methodsMap =
                 'create': 'POST'
                 'update': 'PUT'
-                'read': 'GET'
+                'read'  : 'GET'
                 'delete': 'DELETE'
 
-            xhr = Trello.rest methodsMap[method], "#{@path}/#{@id}", model.attributes
+            requestData = if method is 'read' then options.data else model.toJSON()
+            xhr = Trello.rest methodsMap[method], "#{@path}/#{@id}", requestData, options.success, options.error
             model.trigger 'request', model, xhr, options
             xhr
 
