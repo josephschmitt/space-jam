@@ -9,13 +9,18 @@ sj.SJAppManager.module 'Boards.Show', (Show, SJAppManager, Backbone, Marionette,
         className: 'columns small-12 list-item'
         tagName: 'li'
         ui:
+            cardlink: 'a'
             checkbox: 'input[type="checkbox"]'
         events:
+            'click @ui.cardlink': 'click'
             'change @ui.checkbox': 'change'
             'drag:end': 'dragend'
         render: ->
             super
             @$el.attr 'data-pos', @model.get('pos')
+        click: (e) ->
+            e.preventDefault()
+            SJAppManager.trigger 'card:show', @model.get('id')
         change: (e) ->
             @model.save 
                 closed: @ui.checkbox.prop('checked')

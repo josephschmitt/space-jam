@@ -6,7 +6,7 @@
   sj = window.sj = window.sj || {};
 
   sj.SJAppManager.module('Entities', function(Entities, SJAppManager, Backbone, Marionette, $, _) {
-    var Common, getCards;
+    var Common, getCard, getCards;
     Common = SJAppManager.module('Entities.Common');
     Entities.Card = (function(_super) {
       __extends(Card, _super);
@@ -49,8 +49,30 @@
       });
       return defer.promise();
     };
-    return SJAppManager.reqres.setHandler('entities:cards', function(list_id) {
+    getCard = function(card_id) {
+      var card, defer;
+      defer = $.Deferred();
+      card = new Entities.Card({
+        id: card_id
+      });
+      card.path = 'cards';
+      card.fetch({
+        data: {
+          checkItemStates: true,
+          list: true,
+          list_fields: 'idBoard,name'
+        },
+        success: function(model, response, options) {
+          return defer.resolve(card);
+        }
+      });
+      return defer.promise();
+    };
+    SJAppManager.reqres.setHandler('entities:cards', function(list_id) {
       return getCards(list_id);
+    });
+    return SJAppManager.reqres.setHandler('entities:card', function(card_id) {
+      return getCard(card_id);
     });
   });
 

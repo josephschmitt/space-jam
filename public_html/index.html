@@ -42,7 +42,15 @@
     <script type="text/template" id="card-item-template">
         <span class="handle fi-list"></span>
         <% var checked = data.closed || _.contains(data.labels, 'done') %>
-        <input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %>
+        <input <% if (checked) { %>checked<% } %> type="checkbox" /> <a href="#card/<%- data.id %>"><%= data.name %></a>
+    </script>
+
+    <script type="text/template" id="card-view-template">
+        <div class="columns medium-6 medium-offset-3 small-12">
+            <% var checked = data.closed || _.contains(data.labels, 'done') %>
+            <h2><input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %> <small>In list <strong><%= data.list.name %></strong></small></h2>
+            <%= data.desc %>
+        </div>
     </script>
     
     <!-- injector:js -->
@@ -63,6 +71,8 @@
     <script src="js/app.js"></script>
     <script src="js/entities/common.js"></script>
     <script src="js/apps/boards/boards_app.js"></script>
+    <script src="js/apps/boards/card/card_controller.js"></script>
+    <script src="js/apps/boards/card/card_view.js"></script>
     <script src="js/apps/boards/list/list_controller.js"></script>
     <script src="js/apps/boards/list/list_view.js"></script>
     <script src="js/apps/boards/show/show_controller.js"></script>

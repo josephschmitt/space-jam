@@ -18,6 +18,10 @@
         return SJAppManager.module('Boards.Show').Controller.showBoard(id);
       };
 
+      RoutesController.prototype.showCard = function(id) {
+        return SJAppManager.module('Boards.Card').Controller.showCard(id);
+      };
+
       return RoutesController;
 
     })();
@@ -30,7 +34,8 @@
 
       Router.prototype.appRoutes = {
         'boards': 'listBoards',
-        'boards/:id': 'showBoard'
+        'boards/:id': 'showBoard',
+        'cards/:id': 'showCard'
       };
 
       return Router;
@@ -44,6 +49,10 @@
     SJAppManager.on('boards:show', function(id) {
       SJAppManager.navigate("boards/" + id);
       return routesController.showBoard(id);
+    });
+    SJAppManager.on('card:show', function(id) {
+      SJAppManager.navigate("cards/" + id);
+      return routesController.showCard(id);
     });
     return SJAppManager.addInitializer(function() {
       return new Boards.Router({

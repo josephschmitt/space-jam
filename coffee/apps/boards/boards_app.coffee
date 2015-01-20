@@ -7,11 +7,14 @@ sj.SJAppManager.module 'Boards', (Boards, SJAppManager, Backbone, Marionette, $,
 			SJAppManager.module('Boards.List').Controller.listBoards()
 		showBoard: (id) ->
 			SJAppManager.module('Boards.Show').Controller.showBoard(id)
+		showCard: (id) ->
+			SJAppManager.module('Boards.Card').Controller.showCard(id)
 
 	class Boards.Router extends Marionette.AppRouter
 		appRoutes:
 			'boards': 'listBoards'
 			'boards/:id': 'showBoard'
+			'cards/:id': 'showCard'
 
 	routesController = new Boards.RoutesController()
 
@@ -20,9 +23,12 @@ sj.SJAppManager.module 'Boards', (Boards, SJAppManager, Backbone, Marionette, $,
 		routesController.listBoards()
 
 	SJAppManager.on 'boards:show', (id) ->
-		# console.log 'boards:show', arguments
 		SJAppManager.navigate("boards/#{id}")
 		routesController.showBoard(id)
+
+	SJAppManager.on 'card:show', (id) ->
+		SJAppManager.navigate("cards/#{id}")
+		routesController.showCard(id)
 
 	SJAppManager.addInitializer ->
 		new Boards.Router controller: routesController

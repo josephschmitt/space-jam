@@ -22,10 +22,12 @@
       ListItemView.prototype.tagName = 'li';
 
       ListItemView.prototype.ui = {
+        cardlink: 'a',
         checkbox: 'input[type="checkbox"]'
       };
 
       ListItemView.prototype.events = {
+        'click @ui.cardlink': 'click',
         'change @ui.checkbox': 'change',
         'drag:end': 'dragend'
       };
@@ -33,6 +35,11 @@
       ListItemView.prototype.render = function() {
         ListItemView.__super__.render.apply(this, arguments);
         return this.$el.attr('data-pos', this.model.get('pos'));
+      };
+
+      ListItemView.prototype.click = function(e) {
+        e.preventDefault();
+        return SJAppManager.trigger('card:show', this.model.get('id'));
       };
 
       ListItemView.prototype.change = function(e) {

@@ -21,5 +21,21 @@ sj.SJAppManager.module 'Entities', (Entities, SJAppManager, Backbone, Marionette
                 defer.resolve lists
          defer.promise()
 
+    getCard = (card_id) ->
+        defer = $.Deferred()
+        card = new Entities.Card id: card_id
+        card.path = 'cards'
+        card.fetch
+            data:
+                checkItemStates: true
+                list: true
+                list_fields: 'idBoard,name'
+            success: (model, response, options) ->
+                defer.resolve card
+         defer.promise()
+
     SJAppManager.reqres.setHandler 'entities:cards', (list_id) ->
         getCards(list_id)
+
+    SJAppManager.reqres.setHandler 'entities:card', (card_id) ->
+        getCard(card_id)
