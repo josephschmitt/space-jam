@@ -6,6 +6,13 @@
   sj = window.sj = window.sj || {};
 
   sj.SJAppManager.module('Entities.Common', function(Common, SJAppManager, Backbone, Marionette, $, _) {
+    var methodsMap;
+    methodsMap = {
+      'create': 'POST',
+      'update': 'PUT',
+      'read': 'GET',
+      'delete': 'DELETE'
+    };
     Common.TrelloAPIModel = (function(_super) {
       __extends(TrelloAPIModel, _super);
 
@@ -16,16 +23,10 @@
       TrelloAPIModel.prototype.idAttribute = 'id';
 
       TrelloAPIModel.prototype.sync = function(method, model, options) {
-        var methodsMap, requestData, xhr;
+        var requestData, xhr;
         if (options == null) {
           options = {};
         }
-        methodsMap = {
-          'create': 'POST',
-          'update': 'PUT',
-          'read': 'GET',
-          'delete': 'DELETE'
-        };
         requestData = method === 'read' ? options.data : model.toJSON();
         xhr = Trello.rest(methodsMap[method], "" + this.path + "/" + this.id, requestData, options.success, options.error);
         model.trigger('request', model, xhr, options);
@@ -45,16 +46,10 @@
       TrelloAPICollection.prototype.model = Common.TrelloAPIModel;
 
       TrelloAPICollection.prototype.sync = function(method, collection, options) {
-        var methodsMap, requestData, xhr;
+        var requestData, xhr;
         if (options == null) {
           options = {};
         }
-        methodsMap = {
-          'create': 'POST',
-          'update': 'PUT',
-          'read': 'GET',
-          'delete': 'DELETE'
-        };
         requestData = method === 'read' ? options.data : collection.toJSON();
         xhr = Trello.rest(methodsMap[method], "" + this.path, requestData, options.success, options.error);
         collection.trigger('request', collection, xhr, options);
