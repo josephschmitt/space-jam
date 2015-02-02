@@ -46,7 +46,7 @@
     </script>
 
     <script type="text/template" id="card-view-template">
-        <div class="columns medium-10 medium-offset-1 small-12">
+        <div class="columns medium-8 medium-offset-2 small-12">
             <% var checked = data.closed || _.contains(data.labels, 'done') %>
             <h2><input <% if (checked) { %>checked<% } %> type="checkbox" /> <%= data.name %> <small>In&nbsp;list&nbsp;<strong><%= data.list.name %></strong></small></h2>
             <%= data.desc %>
